@@ -35,7 +35,6 @@ function carregarDiscografia() {
             <h3 class="album-title">${album.titulo}</h3>
             <p class="album-band">${album.banda}</p>
             <p class="album-year">${album.ano}</p>
-            <a href="#" class="btn-album">Ver Músicas</a>
         `;
 
         discoGrid.appendChild(card);
