@@ -1,0 +1,133 @@
+/* ==========================================
+   LOGIN.CSS - Específico do Login
+   ========================================== */
+
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85em;
+    font-family: var(--font-secondary);
+    margin-top: -10px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-gray);
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.remember-me:hover {
+    color: var(--color-light-gray);
+}
+
+.remember-me input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #444;
+    border-radius: 2px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    transition: all var(--transition-fast);
+}
+
+.remember-me input[type="checkbox"]:checked {
+    background: var(--color-yellow);
+    border-color: var(--color-yellow);
+}
+
+.remember-me input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--color-black);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.forgot-password {
+    color: #888;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: all var(--transition-fast);
+}
+
+.forgot-password:hover {
+    color: var(--color-yellow);
+    text-shadow: 0 0 8px rgba(255, 200, 0, 0.4);
+}
+
+/* Estados do botão */
+.login-btn.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.login-btn.loading span::after {
+    content: '...';
+    animation: dots 1.5s infinite;
+}
+
+.login-btn.success {
+    background: #2a5a2a;
+    border-color: #4a8a4a;
+    color: var(--color-white);
+}
+
+.login-btn.error {
+    background: #5a2a2a;
+    border-color: #8a4a4a;
+    color: var(--color-white);
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes dots {
+    0% {
+        content: '.';
+    }
+
+    33% {
+        content: '..';
+    }
+
+    66% {
+        content: '...';
+    }
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+
+    75% {
+        transform: translateX(10px);
+    }
+}
+
+/* Mensagens de erro do login */
+.login-error {
+    color: var(--color-error);
+    font-size: 0.85em;
+    font-family: var(--font-secondary);
+    text-align: center;
+    padding: 8px;
+    background: rgba(255, 0, 0, 0.1);
+    border-radius: 3px;
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    animation: fadeInMsg 0.3s ease-out;
+}

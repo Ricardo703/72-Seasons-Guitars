@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>72 Seasons Guitar Shop</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./login_page/view/styles/index.css">
+
+    <!-- JavaScript (Controller) -->
+    <script type="module" src="./login_page/controller/index.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="background-overlay"></div>
+
+        <div class="form-container">
+            <!-- Header Compartilhado -->
+            <div class="logo-section">
+                <h2 class="album-title">72 SEASONS GUITARS</h2>
+                <div class="season-bar"></div>
+            </div>
+
+            <!-- Formulário de Login -->
+            <form id="loginForm" class="auth-form active">
+                <h3 class="form-title">SIGN IN</h3>
+
+                <div class="input-group">
+                    <input type="email" id="loginEmail" class="login-input" placeholder="Email" required
+                        autocomplete="email">
+                    <span class="input-highlight"></span>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" id="loginPassword" class="login-input" placeholder="Password" required
+                        autocomplete="current-password">
+                    <span class="input-highlight"></span>
+                </div>
+
+                <div class="login-options">
+                    <label class="remember-me">
+                        <input type="checkbox" id="rememberMe">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="submit-btn login-btn">
+                    <span>SIGN IN</span>
+                    <div class="btn-overlay"></div>
+                </button>
+
+                <p class="switch-text">
+                    Don't have an account?
+                    <a href="#" class="switch-link" data-target="cadastroForm">Sign Up</a>
+                </p>
+            </form>
+
+            <!-- Formulário de Cadastro -->
+            <form id="cadastroForm" class="auth-form">
+                <h3 class="form-title">SIGN UP</h3>
+
+                <div class="input-group">
+                    <input type="text" id="cadastroName" class="cadastro-input" placeholder="Full Name" required
+                        autocomplete="name">
+                    <span class="input-highlight"></span>
+                </div>
+
+                <div class="input-group">
+                    <input type="email" id="cadastroEmail" class="cadastro-input" placeholder="Email" required
+                        autocomplete="email">
+                    <span class="input-highlight"></span>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" id="cadastroPassword" class="cadastro-input" placeholder="Password" required
+                        autocomplete="new-password" minlength="6">
+                    <span class="input-highlight"></span>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" id="cadastroConfirmPassword" class="cadastro-input"
+                        placeholder="Confirm Password" required autocomplete="new-password">
+                    <span class="input-highlight"></span>
+                </div>
+
+                <div class="password-strength">
+                    <div class="strength-bar"></div>
+                    <span class="strength-text">Password strength</span>
+                </div>
+
+                <button type="submit" class="submit-btn cadastro-btn">
+                    <span>SIGN UP</span>
+                    <div class="btn-overlay"></div>
+                </button>
+
+                <p class="switch-text">
+                    Already have an account?
+                    <a href="#" class="switch-link" data-target="loginForm">Sign In</a>
+                </p>
+            </form>
+        </div>
+
+        <div class="seasons-number">72</div>
+    </div>
+</body>
+
+</html>
