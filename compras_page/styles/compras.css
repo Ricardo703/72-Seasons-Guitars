@@ -1,0 +1,24 @@
+@import url('cart.css');
+@import url('elements.css');
+
+/* ==========================================
+   CONFIGURAÇÃO GERAL DA PÁGINA DE CARRINHO
+   ========================================== */
+body {
+    background-color: #0a0a0a;
+    /* Fundo escuro das guitarras */
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 40px;
+}
+
+/* Caixa interna do Resumo */
+.summary-box {
+    background: #141414;
+    /* Fundo cinza escuro para destacar do fundo preto */
+    border: 2px solid #ffc800;
+    /* Borda amarela marcante */
+    padding: 25px;
+    border-radius: 8px;
+}

@@ -1,0 +1,103 @@
+/* ---------- HEADER ---------- */
+.main-header {
+    background: rgba(10, 10, 10, 0.95);
+    border-bottom: 1px solid var(--color-border);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 15px 40px;
+}
+
+.logo-sub {
+    font-family: var(--font-primary);
+    font-size: 1.4em;
+    color: var(--color-yellow);
+    letter-spacing: 6px;
+    text-shadow: 0 0 8px var(--glow-yellow-strong);
+    text-decoration: none;
+}
+
+
+/* Área dos Botões (Sign Out + Carrinho lado a lado) */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-login {
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid var(--color-yellow);
+    border-radius: 4px;
+    color: var(--color-yellow);
+    font-family: var(--font-primary);
+    font-size: 0.85em;
+    letter-spacing: 2px;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+}
+
+.btn-login:hover {
+    background: var(--color-yellow);
+    color: var(--color-black);
+    box-shadow: 0 0 15px rgba(255, 200, 0, 0.5);
+}
+
+/* NOVO ESTILO DO CARRINHO - TOTALMENTE LIMPO SEM ATALHOS EM JS */
+.btn-cart {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-yellow);
+    color: var(--color-black);
+    padding: 10px 18px;
+    font-family: var(--font-primary);
+    font-size: 0.85em;
+    text-decoration: none;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(255, 200, 0, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-cart:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px var(--glow-yellow-strong);
+}
+
+.btn-cart span {
+    font-weight: bold;
+    margin-left: 3px;
+}
+
+.header-bar {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-yellow), var(--color-orange), var(--color-yellow), transparent);
+}
+
+/* ---------- SEÇÃO DE PRODUTOS EM CORRETAS 4 COLUNAS ---------- */
+#cards-section {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    /* Fixa 4 cards por linha */
+    gap: 30px !important;
+    max-width: 1400px !important;
+    margin: 40px auto !important;
+    padding: 0 40px !important;
+}
+
+.welcome-section {
+    width: 100%;
+}

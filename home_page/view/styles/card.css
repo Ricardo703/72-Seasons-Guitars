@@ -1,0 +1,331 @@
+#cards-section {
+  width: 100vw;
+  padding: 3vw;
+
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 20vw 20vw 20vw;
+
+  row-gap: 40px;
+  column-gap: 20px;
+}
+
+/* From Uiverse.io by srinivasaiml */
+.card-effect {
+  perspective: 1000px;
+}
+
+.card-inner {
+  --card-bg: #1a1919;
+  --card-accent: #ffcc00;
+  /* AJUSTADO: Amarelo característico da identidade */
+  --card-text: #ffffff;
+  --card-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+  width: 220px;
+  height: 290px;
+  background: var(--card-bg);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: var(--card-shadow);
+  border: 0px solid var(--card-accent);
+  /* Borda agora segue o amarelo accent */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  transform-style: preserve-3d;
+}
+
+.card-inner:hover {
+  transform: rotateY(10deg) rotateX(10deg) translateZ(10px);
+  box-shadow: 0 30px 60px rgba(255, 204, 0, 0.15);
+  /* Sombra levemente amarelada no hover */
+}
+
+.card__liquid {
+  position: absolute;
+  top: -80px;
+  left: 0;
+  width: 300px;
+  height: 200px;
+  background: #ffcc00;
+  /* AJUSTADO: Líquido interno agora é amarelo */
+  border-radius: 50%;
+  transform: translateZ(-80px);
+  filter: blur(80px);
+  transition:
+    transform 0.7s cubic-bezier(0.36, 0, 0.66, -0.56),
+    opacity 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.card-inner:hover .card__liquid {
+  transform: translateZ(-50px) translateY(30px) translateX(-20px) rotate(-20deg) scale(1.2);
+  opacity: 0.4;
+  /* Opacidade controlada para não estourar o preto */
+}
+
+.card__shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.05) 30%,
+      rgba(255, 204, 0, 0.3) 50%,
+      /* Brilho reflexivo com tom dourado */
+      rgba(255, 255, 255, 0.05) 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.card-inner:hover .card__shine {
+  opacity: 1;
+  animation: shine-effect 2s infinite linear;
+}
+
+.card__glow {
+  position: absolute;
+  inset: -15px;
+  background: radial-gradient(circle at 50% 0%,
+      rgba(255, 204, 0, 0.25) 0%,
+      /* AJUSTADO: Glow do topo em amarelo */
+      rgba(255, 204, 0, 0) 60%);
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.card-inner:hover .card__glow {
+  opacity: 1;
+}
+
+.card__content {
+  padding: 1.5em;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  position: relative;
+  z-index: 2;
+}
+
+.card__badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #ffcc00;
+  /* AJUSTADO: Badge amarela */
+  color: black;
+  /* Texto preto na badge amarela para dar leitura */
+  padding: 0.3em 0.6em;
+  border-radius: 999px;
+  font-size: 0.8em;
+  font-weight: 600;
+  transform: scale(0.7);
+  opacity: 0;
+  transition: all 0.5s ease 0.2s;
+}
+
+.card-inner:hover .card__badge {
+  transform: scale(1);
+  opacity: 1;
+  z-index: 1;
+}
+
+.card__image {
+  width: 100%;
+  height: 120px;
+  background: #111111;
+  /* Fundo interno da imagem escuro */
+  border-radius: 15px;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card-inner:hover .card__image {
+  transform: translateY(-8px) scale(1.05);
+}
+
+.card__image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 80%,
+      rgba(255, 204, 0, 0.1) 0%,
+      transparent 40%),
+    repeating-linear-gradient(-45deg,
+      rgba(255, 254, 0, 0.03) 0px,
+      rgba(255, 204, 0, 0.03) 3px,
+      transparent 3px,
+      transparent 6px);
+  opacity: 0.6;
+}
+
+.card__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.card__title {
+  color: var(--card-text);
+  font-size: 1.2em;
+  margin: 0;
+  font-weight: 700;
+  transition:
+    color 0.4s ease-in-out,
+    transform 0.4s ease-in-out;
+}
+
+.card-inner:hover .card__title {
+  color: var(--card-accent);
+  /* Título fica amarelo no hover */
+  transform: translateX(3px);
+}
+
+.card__description {
+  color: var(--card-text);
+  font-size: 0.85em;
+  margin: 0;
+  opacity: 0.8;
+  transition:
+    opacity 0.4s ease-in-out,
+    transform 0.4s ease-in-out;
+}
+
+.card-inner:hover .card__description {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+.card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.card__price {
+  color: var(--card-text);
+  font-weight: 700;
+  font-size: 1.1em;
+  transition:
+    color 0.4s ease-in-out,
+    transform 0.4s ease-in-out;
+}
+
+.card-inner:hover .card__price {
+  color: var(--card-accent);
+  /* Preço fica amarelo no hover */
+  transform: translateX(3px);
+}
+
+.card__button {
+  width: 32px;
+  height: 32px;
+  background: var(--card-accent);
+  /* Botão redondo totalmente amarelo */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  /* Ícone interno vira preto para contrastar com o botão amarelo */
+  cursor: pointer;
+  transition:
+    transform 0.4s ease-in-out,
+    box-shadow 0.4s ease-in-out;
+  transform: scale(0.85);
+}
+
+.card-inner:hover .card__button {
+  transform: scale(1);
+  box-shadow: 0 0 0 5px rgba(255, 204, 0, 0.2);
+  /* Sombra pulsante amarela */
+}
+
+.card-inner:hover .card__button svg {
+  animation: pulse-button 1.5s infinite;
+}
+
+/* Animations */
+@keyframes shine-effect {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+@keyframes pulse-button {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Botão de Editar no Card */
+.card__edit-button {
+  width: 32px;
+  height: 32px;
+  background-color: #222222;
+  border: 1px solid var(--card-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--card-accent);
+  cursor: pointer;
+  transition:
+    transform 0.4s ease-in-out,
+    box-shadow 0.4s ease-in-out;
+  transform: scale(0.85);
+}
+
+.card-inner:hover .card__edit-button {
+  transform: scale(1);
+  box-shadow: 0 0 0 5px rgba(255, 204, 0, 0.15);
+}
+
+.card__edit-button svg {
+  transition: transform 0.3s ease;
+}
+
+.card__edit-button:hover svg {
+  transform: rotate(15deg);
+}
+
+/* Card de Adicionar Produto Especial */
+.card-inner--add {
+  border: 2px dashed var(--card-accent) !important;
+  background-color: rgba(255, 204, 0, 0.02) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease-in-out;
+}
+
+.card-inner--add:hover {
+  background-color: rgba(255, 204, 0, 0.06) !important;
+  border-style: solid !important;
+  box-shadow: 0 15px 30px rgba(255, 204, 0, 0.1) !important;
+}
+
+.card-inner--add svg {
+  transition: transform 0.3s ease;
+}
+
+.card-inner--add:hover svg {
+  transform: scale(1.2) rotate(90deg);
+}

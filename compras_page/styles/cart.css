@@ -1,0 +1,92 @@
+.cart-item {
+    display: flex;
+    align-items: center;
+    background: #141414;
+    border: 1px solid #222;
+    padding: 15px;
+    border-radius: 8px;
+    gap: 20px;
+    transition: border-color 0.2s ease;
+}
+
+.cart-item:hover {
+    border-color: #ffc800;
+}
+
+.cart-item__image {
+    width: 90px;
+    height: 90px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #1a1a1a;
+    border-radius: 6px;
+    padding: 5px;
+}
+
+.cart-item__info {
+    flex: 1;
+}
+
+.cart-item__info h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.1em;
+    color: #ffffff;
+}
+
+.cart-item__info .price {
+    margin: 0;
+    color: #ffc800;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.cart-item__actions {
+    display: flex;
+    align-items: center;
+}
+
+.cart-section-title {
+    font-family: 'Arial Black', 'Impact', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0;
+    /* Evita desalinhamento no topo entre as colunas */
+    font-size: 1.5em;
+}
+
+/* ==========================================
+   ESTRUTURA EM DUAS COLUNAS (LAYOUT)
+   ========================================== */
+.cart-container-layout {
+    display: flex;
+    gap: 40px;
+    max-width: 1300px;
+    margin: 40px auto;
+    align-items: flex-start;
+}
+
+/* Coluna da Esquerda: Seção dos Itens */
+.cart-items-section {
+    flex: 2.5;
+    /* Ocupa a maior parte da tela */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Container onde o JS joga os cards das guitarras */
+#cart-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Coluna da Direita: Seção do Resumo Lateral */
+.cart-summary-section {
+    flex: 1;
+    /* Ocupa o espaço restante na lateral direita */
+
+    /* ⚡ TRANCAMENTO DO RESUMO NA TELA (STICKY) ⚡ */
+    position: sticky;
+    top: 40px;
+}

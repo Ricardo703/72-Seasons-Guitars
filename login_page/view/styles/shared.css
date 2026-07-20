@@ -1,0 +1,269 @@
+/* ==========================================
+   SHARED.CSS - Componentes Compartilhados
+   ========================================== */
+
+.form-container {
+    position: relative;
+    z-index: var(--z-content);
+    width: 420px;
+    max-width: 90%;
+    background: rgba(10, 10, 10, 0.9);
+    border: 2px solid var(--color-border);
+    border-radius: 5px;
+    padding: 40px;
+    box-shadow:
+        var(--shadow-form),
+        inset 0 0 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    animation: formEntrance 0.6s ease-out;
+}
+
+@keyframes formEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logo-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.band-name {
+    font-size: 2.5em;
+    color: var(--color-white);
+    letter-spacing: 8px;
+    text-shadow:
+        0 0 10px rgba(255, 200, 0, 0.5),
+        0 0 20px var(--glow-yellow);
+    margin-bottom: 5px;
+    animation: textGlow 3s ease-in-out infinite;
+}
+
+.album-title {
+    font-size: 1.8em;
+    color: var(--color-yellow);
+    letter-spacing: 12px;
+    text-shadow: 0 0 15px var(--glow-yellow-strong);
+}
+
+@keyframes textGlow {
+
+    0%,
+    100% {
+        text-shadow: 0 0 10px rgba(255, 200, 0, 0.5), 0 0 20px var(--glow-yellow);
+    }
+
+    50% {
+        text-shadow: 0 0 20px rgba(255, 200, 0, 0.8), 0 0 40px var(--glow-yellow-strong);
+    }
+}
+
+.season-bar {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg,
+            transparent,
+            var(--color-yellow),
+            var(--color-orange),
+            var(--color-yellow),
+            transparent);
+    margin: 15px 0;
+    animation: glowBar 2s ease-in-out infinite;
+}
+
+@keyframes glowBar {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.auth-form {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    animation: fadeInForm 0.4s ease-out;
+}
+
+.auth-form.active {
+    display: flex;
+}
+
+@keyframes fadeInForm {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.form-title {
+    color: var(--color-yellow);
+    text-align: center;
+    font-size: 1.5em;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px var(--glow-yellow);
+}
+
+.input-group {
+    position: relative;
+    transition: transform var(--transition-fast);
+}
+
+.input-group:focus-within {
+    transform: scale(1.02);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    background: var(--color-input-bg);
+    border: 1px solid #333;
+    border-radius: 3px;
+    color: var(--color-white);
+    font-size: 1em;
+    font-family: var(--font-secondary);
+    letter-spacing: 1px;
+    transition: all var(--transition-fast);
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: var(--color-yellow);
+    box-shadow: var(--shadow-input-focus);
+}
+
+.input-group input::placeholder {
+    color: #555;
+    font-family: var(--font-secondary);
+}
+
+.input-highlight {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--color-yellow);
+    transition: all var(--transition-fast);
+    transform: translateX(-50%);
+}
+
+.input-group input:focus~.input-highlight {
+    width: 100%;
+}
+
+.submit-btn {
+    position: relative;
+    width: 100%;
+    padding: 15px;
+    background: var(--color-dark);
+    border: 2px solid var(--color-yellow);
+    border-radius: 3px;
+    color: var(--color-yellow);
+    font-size: 1.1em;
+    font-weight: bold;
+    font-family: var(--font-primary);
+    letter-spacing: 4px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all var(--transition-fast);
+}
+
+.submit-btn span {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-overlay {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 200, 0, 0.2),
+            transparent);
+    transition: left var(--transition-medium);
+}
+
+.submit-btn:hover {
+    background: var(--color-yellow);
+    color: var(--color-black);
+    box-shadow: var(--shadow-button-hover);
+    transform: translateY(-2px);
+}
+
+.submit-btn:hover .btn-overlay {
+    left: 100%;
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.switch-text {
+    color: var(--color-gray);
+    text-align: center;
+    font-family: var(--font-secondary);
+    font-size: 0.9em;
+}
+
+.switch-link {
+    color: var(--color-yellow);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.switch-link:hover {
+    text-shadow: 0 0 10px rgba(255, 200, 0, 0.8);
+    color: var(--color-white);
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        width: 95%;
+        padding: 30px 20px;
+    }
+
+    .band-name {
+        font-size: 2em;
+        letter-spacing: 4px;
+    }
+
+    .album-title {
+        font-size: 1.4em;
+        letter-spacing: 6px;
+    }
+}
+
+@keyframes fadeInMsg {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

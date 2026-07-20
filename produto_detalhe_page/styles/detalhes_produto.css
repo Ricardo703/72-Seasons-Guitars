@@ -1,0 +1,49 @@
+@import url(buttons.css);
+@import url(columns.css);
+
+/* ---------- CONFIGURAÇÕES GERAIS ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #0a0a0a;
+    /* --color-black */
+    color: #ffffff;
+    /* --color-white */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- CONTAINER PRINCIPAL ---------- */
+.container-produto {
+    max-width: 1200px;
+    width: 100%;
+    background-color: #1a1a1a;
+    /* --color-dark */
+    border: 2px solid #2a2a2a;
+    /* --color-border */
+    border-radius: 4px;
+    /* Visual mais reto/vincado estilo metal */
+    padding: 40px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+}
+
+/* Responsividade para Celulares */
+@media (max-width: 768px) {
+    .container-produto {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 30px;
+    }
+}
