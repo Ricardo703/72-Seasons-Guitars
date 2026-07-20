@@ -12,11 +12,11 @@ export async function getProducts() {
 
     if (error) {
         console.error('Erro ao buscar produtos:', error);
-        return [];  // ← RETORNA ARRAY VAZIO em caso de erro
+        return [];
     }
 
-    console.log('Produtos recebidos:', produtos);  // ← ajuda na depuração
-    return produtos || [];  // ← garante que sempre retorna um array
+    console.log('Produtos recebidos:', produtos);
+    return produtos || [];
 }
 
 export async function updateProduct(id, dadosAtualizados) {
@@ -36,19 +36,53 @@ export async function updateProduct(id, dadosAtualizados) {
 }
 
 export async function addProduct(dadosProduto) {
+    // Buscar UUID da categoria (ex.: "Guitarra Elétrica")
+    const { data: categoria, error: catError } = await supabase
+        .from('Categoria')
+        .select('id_categoria')
+        .eq('nome_categoria', dadosProduto.categoria || 'Guitarra Elétrica')
+        .single();
+
+    if (catError || !categoria) {
+        console.error('Categoria não encontrada:', catError?.message);
+        return { success: false, error: 'Categoria não encontrada.' };
+    }
+
+    // Buscar UUID do fornecedor (ex.: "Gibson")
+    const { data: fornecedor, error: fornError } = await supabase
+        .from('Fornecedor')
+        .select('id_fornecedor')
+        .eq('nome_fornecedor', dadosProduto.fornecedor || 'Gibson')
+        .single();
+
+    if (fornError || !fornecedor) {
+        console.error('Fornecedor não encontrado:', fornError?.message);
+        return { success: false, error: 'Fornecedor não encontrado.' };
+    }
+
+    const produtoCompleto = {
+        nome_produto: dadosProduto.nome_produto,
+        preco: dadosProduto.preco,
+        imagem_url: dadosProduto.imagem_url,
+        estoque: dadosProduto.estoque || 10,
+        id_categoria: categoria.id_categoria,
+        id_fornecedor: fornecedor.id_fornecedor
+    };
+
     const { data, error } = await supabase
         .from('Produtos')
-        .insert([dadosProduto])
+        .insert([produtoCompleto])
         .select();
 
     if (error) {
-        console.error('Erro ao cadastrar produto no Supabase:', error.message, error.details, error.hint);
-        return null;
+        console.error('Erro ao cadastrar produto:', error.message);
+        return { success: false, error: error.message };
     }
 
     console.log('Produto cadastrado com sucesso:', data);
-    return data;
+    return { success: true, data };
 }
+
 export async function deleteProduct(id) {
     const { data, error } = await supabase
         .from('Produtos')
