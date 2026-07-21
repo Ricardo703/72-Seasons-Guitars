@@ -1,6 +1,6 @@
 // produto_detalhe_page/controller/detalhes.js
 import { criarElementoDetalhes } from '.././view/detalhes_view.js';
-import { adicionarAoCarrinho } from '../../home_page/services/carrinho_service.js';
+import { adicionarAoCarrinho } from '../../api/carrinho_service.js';
 
 export function renderizarDetalhesDinamicamente(produto) {
     const root = document.getElementById('root-detalhes');

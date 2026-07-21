@@ -1,4 +1,4 @@
-import { obterCarrinho, removerDoCarrinho } from '../../home_page/services/carrinho_service.js';
+import { obterCarrinho, removerDoCarrinho } from '../../api/carrinho_service.js';
 
 export function renderCart(cartContainer, summaryContainer) {
     // 1. Limpa o container antes de renderizar para não duplicar itens antigos

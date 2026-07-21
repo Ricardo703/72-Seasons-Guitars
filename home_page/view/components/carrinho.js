@@ -1,6 +1,6 @@
 // home_page/controller/carrinho_controller.js
 import { renderCart } from '../../../compras_page/controller/compras.js';
-import { obterTotalItensCarrinho, adicionarAoCarrinho } from '../../services/carrinho_service.js';
+import { obterTotalItensCarrinho, adicionarAoCarrinho } from '../../../api/carrinho_service.js';
 
 export function atualizarContadorHeader() {
     const totalItens = obterTotalItensCarrinho();

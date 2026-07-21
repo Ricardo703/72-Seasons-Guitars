@@ -1,0 +1,11 @@
+node_modules/
+json_packages/
+
+.eslintcache    
+
+.env
+
+.vscode/
+.idea/
+*.swp
+*.swo

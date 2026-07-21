@@ -1,5 +1,5 @@
 // home_page/view/components/form_produto.js (ajuste o caminho se necessário)
-import { updateProduct, deleteProduct, addProduct } from '../../services/produtos_service.js';
+import { updateProduct, deleteProduct, addProduct } from '../../../api/produtos_service.js';
 import { createCards } from '../../controller/cards.js';
 
 let cardsSection;
