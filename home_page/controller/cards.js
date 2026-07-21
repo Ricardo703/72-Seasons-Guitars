@@ -1,5 +1,5 @@
 // home_page/controller/card.js
-import { getProducts } from '../../api/produtos_service.js';
+import { getProducts } from 'https://72-seasons-guitars-34yryiwwc.vercel.app/api/produtos_service.js';
 import { criarCard, criarCardAdicionar } from '../view/components/card_view.js';
 
 export async function createCards(cards_sec) {
