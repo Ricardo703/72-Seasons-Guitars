@@ -1,6 +1,9 @@
-// home_page/controller/card.js
-import { getProducts } from 'https://72-seasons-guitars-34yryiwwc.vercel.app/api/produtos_service.js';
 import { criarCard, criarCardAdicionar } from '../view/components/card_view.js';
+
+async function getProducts() {
+   const response = await fetch('/api/produtos');
+   return await response.json();
+}
 
 export async function createCards(cards_sec) {
    try {
