@@ -1,6 +1,13 @@
 // produto_detalhe_page/controller/detalhes.js
 import { criarElementoDetalhes } from '.././view/detalhes_view.js';
-import { adicionarAoCarrinho } from '../../api/carrinho_service.js';
+
+async function adicionarAoCarrinho(produto) {
+    await fetch('/api/carrinho', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(produto)
+    });
+}
 
 export function renderizarDetalhesDinamicamente(produto) {
     const root = document.getElementById('root-detalhes');
@@ -16,17 +23,18 @@ export function renderizarDetalhesDinamicamente(produto) {
     const elemento = criarElementoDetalhes(produto);
     if (!elemento) return;
 
-    // Adiciona evento ao botão de compra (agora no controller)
     const btnComprar = elemento.querySelector('.btn-comprar');
     if (btnComprar) {
-        btnComprar.addEventListener('click', () => {
-            adicionarAoCarrinho(produto);
+        btnComprar.addEventListener('click', async () => {
+            await adicionarAoCarrinho(produto);
             alert('Adicionado ao carrinho com sucesso!');
             if (typeof window.atualizarContadorHeader === 'function') {
-                window.atualizarContadorHeader();
+                await window.atualizarContadorHeader();
             }
         });
     }
+
+
 
     // Insere no DOM
     root.appendChild(elemento);

@@ -1,11 +1,10 @@
-import { obterCarrinho, removerDoCarrinho } from '../../api/carrinho_service.js';
-
-export function renderCart(cartContainer, summaryContainer) {
+export async function renderCart(cartContainer, summaryContainer) {
     // 1. Limpa o container antes de renderizar para não duplicar itens antigos
     cartContainer.innerHTML = '';
 
     // 2. Lê os produtos salvos no seu novo Model (SEM LOCALSTORAGE)
-    const produtosNoCarrinho = obterCarrinho();
+    const response = await fetch('/api/carrinho');
+    const produtosNoCarrinho = await response.json();
     console.log(produtosNoCarrinho);
     let subtotal = 0;
 
@@ -43,18 +42,19 @@ export function renderCart(cartContainer, summaryContainer) {
         // =========================================================
         // LÓGICA DE CLIQUE PARA REMOVER O ITEM VIA MODEL
         // =========================================================
-        removeBtn.addEventListener('click', () => {
-            // Remove o item chamando a função do Model
-            removerDoCarrinho(index);
+        removeBtn.addEventListener('click', async () => {
+            // Chama a rota DELETE /api/carrinho/:index da sua API Express
+            await fetch(`/api/carrinho/${index}`, { method: 'DELETE' });
 
             // Re-renderiza a tela com o carrinho atualizado
-            renderCart(cartContainer, summaryContainer);
+            await renderCart(cartContainer, summaryContainer);
 
             // Avisa o cabeçalho global para atualizar o contador
             if (typeof window.atualizarContadorHeader === 'function') {
-                window.atualizarContadorHeader();
+                await window.atualizarContadorHeader();
             }
         });
+
 
 
         itemActions.appendChild(removeBtn);
